@@ -50,7 +50,7 @@ import com.microsoft.mimickeralarm.R;
 import com.microsoft.mimickeralarm.utilities.Loggable;
 import com.microsoft.mimickeralarm.utilities.Logger;
 import com.microsoft.mimickeralarm.utilities.KeyUtilities;
-import com.microsoft.projectoxford.vision.VisionServiceRestClient;
+import com.microsoft.mimickeralarm.utilities.NewVisionServiceRestClient;
 import com.microsoft.projectoxford.vision.contract.AnalyzeResult;
 
 import java.io.ByteArrayInputStream;
@@ -72,7 +72,7 @@ import java.util.Random;
  *
  */
 public class MimicColorCaptureFragment extends MimicWithCameraFragment {
-    private VisionServiceRestClient mVisionServiceRestClient;
+    private NewVisionServiceRestClient mVisionServiceRestClient;
     private String mQuestionColorName;
     private float[] mQuestionColorRangeLower;
     private float[] mQuestionColorRangeUpper;
@@ -89,7 +89,7 @@ public class MimicColorCaptureFragment extends MimicWithCameraFragment {
         Resources resources = getResources();
 
         String subscriptionKey = KeyUtilities.getToken(getActivity(), "vision");
-        mVisionServiceRestClient = new VisionServiceRestClient(subscriptionKey);
+        mVisionServiceRestClient = new NewVisionServiceRestClient(subscriptionKey);
 
         String[] questions = resources.getStringArray(R.array.vision_color_questions);
         TextView instruction = (TextView) view.findViewById(R.id.instruction_text);
